@@ -8,4 +8,11 @@ function saisieControle(int $saisi, int $min, int $max){
 	return true;
 }
 
+function valideChamps($saisi): bool {
+    return trim((string) $saisi) === '';
+}
+
+
+
+
 ?>

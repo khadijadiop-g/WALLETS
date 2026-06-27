@@ -2,13 +2,9 @@
 
 require_once "controller.php";
 require_once "validator.php";
+require_once "repository.php";
 
-function afficheMessage($message){
-echo $message;
-};
-
-
-function afficherMenu(){
+$wallets = [];
 
 do {
    echo"
@@ -20,14 +16,34 @@ do {
 0 - Quitter
    
    ";
-   $choix = readline("Votre choix: ");
-   saisieControle($choix,0,4);
+   $choix = trim(readline("Votre choix: "));
 
-} while ($choix!=0);
+switch($choix){
 
-};
-afficherMenu();
+case '1':
+    $wallets = newWallet($wallets);
+    echo "Wallet créé avec succès.\n";
+    break;
 
+case '2':
+    echo "Fonction dépôt non implémentée pour le moment.\n";
+    break;
+
+case '3':
+    echo "Fonction retrait non implémentée pour le moment.\n";
+    break;
+
+case '0':
+    echo "Au revoir !\n";
+    break;
+
+default:
+    echo "Choix invalide, veuillez réessayer\n";
+    break;
+
+}
+
+} while ($choix !== '0');
 
 
 ?>
