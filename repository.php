@@ -76,5 +76,9 @@ function majSolde(int $index, int $montant, bool $addition): void {
         $wallets[$index]['solde'] -= $montant;
     }
 }
+
+
+
+
 ?>
 
