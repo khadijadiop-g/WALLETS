@@ -21,16 +21,24 @@ do {
 switch($choix){
 
 case '1':
-    $wallets = newWallet($wallets);
+    newWallet();
     echo "Wallet créé avec succès.\n";
     break;
 
 case '2':
-    echo "Fonction dépôt non implémentée pour le moment.\n";
+    faireTransactionController(true);
     break;
 
 case '3':
-    echo "Fonction retrait non implémentée pour le moment.\n";
+    faireTransactionController(false);
+    break;
+
+case '4':
+    listerTransactions();
+    break;
+
+case '5':
+    listerWallets();
     break;
 
 case '0':

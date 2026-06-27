@@ -1,60 +1,38 @@
 <?php
 
-require_once "repository.php";
-require_once "validator.php";
+require_once "services.php";
 
-function saisirWallet(): array {
-    $wallet = [
-        'client' => '',
-        'telephone' => '',
-        'code' => 0,
-        'solde' => 0
+function remplir(): array {
+    return [
+        'client' => readline("Veuillez saisir votre nom : "),
+        'telephone' => readline("Veuillez saisir le numéro : "),
+        'code' => readline("Veuillez saisir un code (4 chiffres) : "),
+        'solde' => readline("Veuillez saisir votre solde : ")
+    ];
+}
+
+function creer(): void {
+    $wallet = remplir();
+    enregistrerWallet($wallet);
+}
+
+function traiter(bool $isDepot): void {
+    $transaction = [
+        'telephone' => readline("Veuillez saisir le téléphone : "),
+        'montant' => (int) readline("Veuillez saisir le montant de la transaction : ")
     ];
 
-do {
-    $wallet['client'] = readline("Veuillez saisir votre nom : ");
-    if (valideChamps($wallet['client'])) {
-        echo "Veuillez remplir le champ \n";
-        continue;
-    }
-    break;
-} while (true);
-
-do {
-    $wallet['telephone'] = readline("Veuillez saisir le numéro : ");
-    if (valideChamps($wallet['telephone'])) {
-        echo "Veuillez remplir le champ \n";
-        continue;
-    }
-    break;
-} while (true);
-
-do {
-    $codeInput = readline("Veuillez saisir un code : ");
-    if (valideChamps($codeInput)) {
-        echo "Veuillez remplir le champ \n";
-        continue;
-    }
-    $wallet['code'] = (int) $codeInput;
-    break;
-} while (true);
-
-do {
-    $soldeInput = readline("Veuillez saisir votre solde : ");
-    if (valideChamps($soldeInput)) {
-        echo "Veuillez remplir le champ \n";
-        continue;
-    }
-    $wallet['solde'] = (int) $soldeInput;
-    break;
-} while (true);
-
-    return $wallet;
+    faireOperation($transaction, $isDepot);
 }
 
-function newWallet(array $wallets): array {
-    $newWallet = saisirWallet();
-    return creerWallet($wallets, $newWallet);
+function voirTrans(): void {
+    afficherTrans();
+}
+
+function voirWallets(): void {
+    afficherWallets();
 }
 ?>
+
+
 
