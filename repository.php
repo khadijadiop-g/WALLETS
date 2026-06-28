@@ -39,9 +39,6 @@ function listerTransactions(): void {
     });
 }
 
-
-
-
 function trouverParTel(string $telephone): int {
     global $wallets;
 
