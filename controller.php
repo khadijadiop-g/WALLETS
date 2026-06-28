@@ -2,6 +2,8 @@
 
 require_once "services.php";
 
+
+
 function remplir(): array {
     return [
         'client' => readline("Veuillez saisir votre nom : "),
@@ -11,10 +13,13 @@ function remplir(): array {
     ];
 }
 
+
 function creer(): void {
     $wallet = remplir();
     enregistrerWallet($wallet);
 }
+
+
 
 function traiter(bool $isDepot): void {
     $transaction = [
@@ -25,9 +30,12 @@ function traiter(bool $isDepot): void {
     faireOperation($transaction, $isDepot);
 }
 
+
+
 function voirTrans(): void {
     afficherTrans();
 }
+
 
 function voirWallets(): void {
     afficherWallets();
