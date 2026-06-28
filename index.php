@@ -5,6 +5,7 @@ require_once "validator.php";
 require_once "repository.php";
 
 $wallets = [];
+$transactions = [];
 
 do {
    echo"
