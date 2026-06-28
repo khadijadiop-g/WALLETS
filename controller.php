@@ -16,8 +16,6 @@ function creer(): void {
     enregistrerWallet($wallet);
 }
 
-
-
 function traiter(bool $isDepot): void {
     $transaction = [
         'telephone' => readline("Veuillez saisir le téléphone : "),

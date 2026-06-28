@@ -20,7 +20,6 @@ do {
 
 switch($choix){
 
-
 case '1':
     newWallet();
     echo "Wallet créé avec succès.\n";

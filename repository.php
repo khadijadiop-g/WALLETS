@@ -46,8 +46,6 @@ function trouverParTel(string $telephone): int {
     return $index === false ? -1 : (int) $index;
 }
 
-
-
 function trouverParCode(string $code): int {
     global $wallets;
 

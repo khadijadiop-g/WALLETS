@@ -8,9 +8,6 @@ function enregistrerWallet(array $newWallet): void {
         echo "Votre nom ne doit pas être vide.\n";
         $newWallet['client'] = readline("Ressaisir un nom : ");
     }
-
-
-    
     while (!telValide($newWallet['telephone'])) {
         echo "Votre numéro est invalide. Il doit commencer par 77, 78, 76, 70 ou 75 et comporter 9 chiffres.\n";
         $newWallet['telephone'] = readline("Ressaisir un numéro : ");
