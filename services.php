@@ -14,6 +14,7 @@ function enregistrerWallet(array $newWallet): void {
         $newWallet['telephone'] = readline("Ressaisir un numéro : ");
     }
 
+
     while (telExiste($newWallet['telephone'])) {
         echo "Ce numéro existe déjà.\n";
         $newWallet['telephone'] = readline("Ressaisir le numéro : ");
@@ -29,6 +30,7 @@ function enregistrerWallet(array $newWallet): void {
         $newWallet['code'] = readline("Ressaisir le code : ");
     }
 
+
     while (!soldeValide($newWallet['solde'])) {
         echo "Solde invalide. Le solde doit être un nombre positif ou zéro.\n";
         $newWallet['solde'] = readline("Ressaisir le solde : ");
@@ -36,6 +38,7 @@ function enregistrerWallet(array $newWallet): void {
 
     $newWallet['solde'] = (int) $newWallet['solde'];
     ajoutWallet($newWallet);
+
 }
 
 function frais(int $montant): int {
@@ -43,12 +46,15 @@ function frais(int $montant): int {
         return 200;
     }
 
+
     if ($montant <= 100000) {
         return 500;
     }
 
+
     $result = (int) ($montant * 0.01);
     return $result > 5000 ? 5000 : $result;
+
 }
 
 function preparerTrans(array $newTrans, bool $isDepot): ?array {
@@ -60,6 +66,7 @@ function preparerTrans(array $newTrans, bool $isDepot): ?array {
         }
     } while ($index === -1);
 
+
     if (!$isDepot) {
         $solde = $GLOBALS['wallets'][$index]['solde'];
 
@@ -67,6 +74,7 @@ function preparerTrans(array $newTrans, bool $isDepot): ?array {
             echo "Votre solde est nul, vous ne pouvez pas faire de retrait.\n";
             return null;
         }
+
 
         do {
             $montantFrais = frais($newTrans['montant']);
@@ -86,6 +94,7 @@ function preparerTrans(array $newTrans, bool $isDepot): ?array {
 
     return $newTrans;
 }
+
 
 function faireOperation(array $newTrans, bool $isDepot): void {
     $transaction = preparerTrans($newTrans, $isDepot);

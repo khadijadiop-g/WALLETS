@@ -5,6 +5,7 @@ $wallets = [
     ['client' => 'Hawa Baila Wane', 'telephone' => '774799479', 'code' => '0000', 'solde' => 100000]
 ];
 
+
 $transactions = [
     ['montant' => 1000, 'indexClient' => 0, 'frais' => 0, 'type' => 'Dépôt'],
     ['montant' => 5000, 'indexClient' => 0, 'frais' => 0, 'type' => 'Retrait']
@@ -20,6 +21,7 @@ function ajoutTrans(array $newTrans): void {
     $transactions[] = $newTrans;
 }
 
+
 function listerWallets(): void {
     global $wallets;
 
@@ -27,6 +29,7 @@ function listerWallets(): void {
         echo "[{$index}] Titulaire : {$wallet['client']} | Téléphone : {$wallet['telephone']} | Solde : {$wallet['solde']}\n";
     }
 }
+
 
 function listerTransactions(): void {
     global $wallets, $transactions;
@@ -39,6 +42,7 @@ function listerTransactions(): void {
     }
 }
 
+
 function trouverParTel(string $telephone): int {
     global $wallets;
 
@@ -50,6 +54,7 @@ function trouverParTel(string $telephone): int {
 
     return -1;
 }
+
 
 function trouverParCode(string $code): int {
     global $wallets;

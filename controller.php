@@ -25,6 +25,7 @@ function traiter(bool $isDepot): void {
     faireOperation($transaction, $isDepot);
 }
 
+
 function voirTrans(): void {
     afficherTrans();
 }
