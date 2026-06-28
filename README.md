@@ -1,1 +1,1 @@
-https://trello.com/invite/b/6a405d2f3b42bc95d84b84be/ATTI6ada5187f538090711fd6b56df72af232F4EDF94/wane-wallet
+Lien du tableau Trello : https://trello.com/invite/b/6a405d2f3b42bc95d84b84be/ATTI6ada5187f538090711fd6b56df72af232F4EDF94/wane-wallet
