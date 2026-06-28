@@ -21,25 +21,13 @@ function soldeValide($solde): bool {
 function telExiste(string $numero): bool {
     global $wallets;
 
-    foreach ($wallets as $wallet) {
-        if ($wallet['telephone'] === $numero) {
-            return true;
-        }
-    }
-
-    return false;
+    return in_array($numero, array_column($wallets, 'telephone'), true);
 }
 
 function codeUtilise($code): bool {
     global $wallets;
 
-    foreach ($wallets as $wallet) {
-        if ((string) $wallet['code'] === (string) $code) {
-            return true;
-        }
-    }
-
-    return false;
+    return in_array((string) $code, array_map(fn($wallet) => (string) $wallet['code'], $wallets), true);
 }
 ?>
 

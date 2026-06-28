@@ -23,44 +23,34 @@ function ajoutTrans(array $newTrans): void {
 function listerWallets(): void {
     global $wallets;
 
-    foreach ($wallets as $index => $wallet) {
+    array_walk($wallets, function ($wallet, $index): void {
         echo "[{$index}] Titulaire : {$wallet['client']} | Téléphone : {$wallet['telephone']} | Solde : {$wallet['solde']}\n";
-    }
+    });
 }
 
 function listerTransactions(): void {
     global $wallets, $transactions;
 
-    foreach ($transactions as $transaction) {
+    array_walk($transactions, function ($transaction) use ($wallets): void {
         $indexClient = $transaction['indexClient'];
         $client = $wallets[$indexClient] ?? null;
         $nomClient = $client['client'] ?? 'Inconnu';
         echo "Type : {$transaction['type']} | Titulaire : {$nomClient} | Montant : {$transaction['montant']} | Frais : {$transaction['frais']}\n";
-    }
+    });
 }
 
 function trouverParTel(string $telephone): int {
     global $wallets;
 
-    foreach ($wallets as $index => $wallet) {
-        if ($wallet['telephone'] === $telephone) {
-            return $index;
-        }
-    }
-
-    return -1;
+    $index = array_search(array_column($wallets, 'telephone'), $telephone, true);
+    return $index === false ? -1 : (int) $index;
 }
 
 function trouverParCode(string $code): int {
     global $wallets;
 
-    foreach ($wallets as $index => $wallet) {
-        if ($wallet['code'] === $code) {
-            return $index;
-        }
-    }
-
-    return -1;
+    $index = array_search(array_column($wallets, 'code'), $code, true);
+    return $index === false ? -1 : (int) $index;
 }
 
 function majSolde(int $index, int $montant, bool $addition): void {
@@ -76,9 +66,6 @@ function majSolde(int $index, int $montant, bool $addition): void {
         $wallets[$index]['solde'] -= $montant;
     }
 }
-
-
-
 
 ?>
 
