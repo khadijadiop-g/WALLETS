@@ -9,31 +9,37 @@ function enregistrerWallet(array $newWallet): void {
         $newWallet['client'] = readline("Ressaisir un nom : ");
     }
 
+
     while (!telValide($newWallet['telephone'])) {
         echo "Votre numéro est invalide. Il doit commencer par 77, 78, 76, 70 ou 75 et comporter 9 chiffres.\n";
         $newWallet['telephone'] = readline("Ressaisir un numéro : ");
     }
+
 
     while (telExiste($newWallet['telephone'])) {
         echo "Ce numéro existe déjà.\n";
         $newWallet['telephone'] = readline("Ressaisir le numéro : ");
     }
 
+
     while (!codeValide($newWallet['code'])) {
         echo "Code invalide. Le code doit comporter 4 chiffres.\n";
         $newWallet['code'] = readline("Ressaisir le code : ");
     }
+
 
     while (codeUtilise($newWallet['code'])) {
         echo "Ce code est déjà utilisé.\n";
         $newWallet['code'] = readline("Ressaisir le code : ");
     }
 
+
     while (!soldeValide($newWallet['solde'])) {
         echo "Solde invalide. Le solde doit être un nombre positif ou zéro.\n";
         $newWallet['solde'] = readline("Ressaisir le solde : ");
     }
 
+    
     $newWallet['solde'] = (int) $newWallet['solde'];
     ajoutWallet($newWallet);
 }
